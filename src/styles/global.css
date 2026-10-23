@@ -1,0 +1,78 @@
+:root {
+  --crema-claro: #FFF0D9;
+  --cafe-oscuro: #68412D;
+  --cafe-medio: #80523A;
+  --beige: #EBD5B8;
+  --cafe-rosado: #A47A63;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--crema-claro);
+  color: var(--cafe-oscuro);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Tipografía redondeada para encabezados */
+.font-display {
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* Efecto idéntico al título "ROLES DE CANELA" del menú original */
+.poster-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  color: #FFF0D9;
+  -webkit-text-stroke: 7px #68412D;
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 #68412D, 0 10px 20px rgba(104, 65, 45, 0.18);
+  letter-spacing: 0.04em;
+  line-height: 1.08;
+}
+
+@media (max-width: 640px) {
+  .poster-title {
+    -webkit-text-stroke: 5px #68412D;
+  }
+}
+
+/* Animaciones suaves */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: floatSlow 4.5s ease-in-out infinite;
+}
+
+/* Tarjetas artesanales */
+.product-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px -12px rgba(104, 65, 45, 0.18);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF0D9;
+}
+::-webkit-scrollbar-thumb {
+  background: #A47A63;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #68412D;
+}
