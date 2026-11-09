@@ -126,24 +126,37 @@ function renderCustomizer() {
   const fruitList = document.getElementById("customizer-fruit-list");
   const extraList = document.getElementById("customizer-extra-list");
 
-  // 1. Roles base
+// 1. Roles base
   baseList.innerHTML = PRODUCTS.map((prod) => {
     const isSelected = selectedBaseProduct.id === prod.id;
     return `
       <button
         type="button"
         data-base-id="${prod.id}"
-        class="select-base-btn text-left p-3.5 rounded-2xl border-2 transition-all flex items-center justify-between ${
+        class="select-base-btn text-left p-3 rounded-2xl border-2 transition-all flex items-center justify-between gap-2 ${
           isSelected
             ? "border-cafeOscuro bg-beige/80 shadow-sm"
             : "border-beige bg-crema hover:border-cafeRosado"
         }"
       >
-        <div class="pr-2">
-          <span class="block font-bold text-sm text-cafeOscuro">${prod.name}</span>
-          <span class="text-xs text-cafeMedio">$${prod.price} MXN</span>
+        <div class="flex items-center gap-3">
+          <!-- Miniatura de la imagen del rol -->
+          <div class="flex-shrink-0">
+            <img
+              src="${prod.image}"
+              onerror="this.onerror=null; this.src='${prod.fallbackImage}';"
+              alt="${prod.name}"
+              class="w-12 h-12 rounded-xl object-cover border border-cafeRosado/40 shadow-sm"
+            />
+          </div>
+          <!-- Textos -->
+          <div class="flex flex-col">
+            <span class="font-bold text-sm text-cafeOscuro leading-tight">${prod.name}</span>
+            <span class="text-xs text-cafeMedio mt-0.5">$${prod.price} MXN</span>
+          </div>
         </div>
-        <span class="w-5 h-5 rounded-full border-2 border-cafeOscuro flex items-center justify-center text-xs ${
+        <!-- Check de selección -->
+        <span class="w-5 h-5 flex-shrink-0 rounded-full border-2 border-cafeOscuro flex items-center justify-center text-xs ${
           isSelected ? "bg-cafeOscuro text-crema" : ""
         }">
           ${isSelected ? "✓" : ""}
