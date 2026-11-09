@@ -63,7 +63,7 @@
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-cafeOscuro">
         <a href="#inicio" class="hover:text-cafeMedio transition-colors">Inicio</a>
         <a href="#menu" class="hover:text-cafeMedio transition-colors">Menú</a>
-        <a href="#personalizar" class="hover:text-cafeMedio transition-colors">Personalizar Rol</a>
+       <a href="personalizar.html" class="hover:text-cafeMedio transition-colors">Personalizar Rol</a>
         <a href="#carta-oficial" class="hover:text-cafeMedio transition-colors">Carta de Precios</a>
       </nav>
 
@@ -116,9 +116,9 @@
               <span>Ver menú</span>
               <span>↓</span>
             </a>
-            <a href="#personalizar" class="inline-flex items-center gap-2 bg-beige hover:bg-cafeRosado hover:text-crema text-cafeOscuro border-2 border-cafeOscuro/20 px-7 py-4 rounded-2xl font-bold text-base transition-all hover:-translate-y-0.5">
+              <a href="personalizar.html" class="inline-flex items-center gap-2 bg-beige hover:bg-cafeRosado hover:text-crema text-cafeOscuro border-2 border-cafeOscuro/20 px-7 py-4 rounded-2xl font-bold text-base transition-all hover:-translate-y-0.5">
               <span> Ordenar y Personalizar</span>
-            </a>
+              </a>
           </div>
 
           <!-- Sellos de confianza -->
@@ -189,116 +189,6 @@
     <!-- Grid dinámico de productos -->
     <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <!-- Renderizado por src/main.js -->
-    </div>
-  </section>
-
-  <!-- ================= 4. PERSONALIZADOR DE ROLES DE CANELA ================= -->
-  <section id="personalizar" class="py-16 sm:py-20 bg-beige/65 border-y border-cafeRosado/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="inline-block bg-cafeOscuro text-crema px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
-          Armado a tu gusto
-        </span>
-        <h2 class="font-display text-3xl sm:text-4xl text-cafeOscuro">
-          Personaliza tu Rol de Canela
-        </h2>
-        <p class="text-cafeMedio mt-2 text-sm sm:text-base">
-          Elige tu rol base, combina toppings frutales (+$10) o adicionales (+$7) y observa cómo se actualiza el precio al instante.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <!-- Paso 1, 2 y 3: Opciones -->
-        <div class="lg:col-span-7 space-y-6">
-          
-          <!-- Paso 1: Elegir Rol Base -->
-          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-display text-xl text-cafeOscuro">1. Selecciona tu Rol Base</h3>
-              <span class="text-xs font-bold bg-beige px-3 py-1 rounded-full text-cafeMedio">Obligatorio</span>
-            </div>
-            <div id="customizer-base-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <!-- Renderizado dinámicamente -->
-            </div>
-          </div>
-
-          <!-- Paso 2: Toppings Frutales (+$10 MXN) -->
-          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h3 class="font-display text-xl text-cafeOscuro">2. Toppings Frutales</h3>
-                <p class="text-xs text-cafeMedio">Puedes elegir uno o varios ingredientes frescos</p>
-              </div>
-              <span class="bg-cafeOscuro text-crema px-3.5 py-1 rounded-full text-xs font-extrabold">+$10 MXN c/u</span>
-            </div>
-            <div id="customizer-fruit-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <!-- Renderizado dinámicamente -->
-            </div>
-          </div>
-
-          <!-- Paso 3: Toppings Adicionales (+$7 MXN) -->
-          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h3 class="font-display text-xl text-cafeOscuro">3. Toppings Adicionales</h3>
-                <p class="text-xs text-cafeMedio">Dale un toque crujiente o chocolatoso</p>
-              </div>
-              <span class="bg-cafeOscuro text-crema px-3.5 py-1 rounded-full text-xs font-extrabold">+$7 MXN c/u</span>
-            </div>
-            <div id="customizer-extra-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <!-- Renderizado dinámicamente -->
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Panel Derecho: Resumen en vivo del Rol Personalizado -->
-        <div class="lg:col-span-5 lg:sticky lg:top-28">
-          <div class="bg-crema rounded-3xl p-6 sm:p-7 border-2 border-cafeOscuro/20 shadow-xl space-y-5">
-            <div class="flex items-center justify-between border-b border-beige pb-4">
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-cafeRosado">Vista Previa</span>
-                <h3 id="summary-base-name" class="font-display text-2xl text-cafeOscuro">Rol de canela glaseado</h3>
-              </div>
-              <span id="summary-base-price" class="font-display text-xl bg-beige px-3.5 py-1 rounded-full text-cafeOscuro">$55</span>
-            </div>
-
-            <!-- Lista de toppings activos -->
-            <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-cafeMedio block mb-2">
-                Toppings seleccionados:
-              </span>
-              <div id="summary-toppings-badges" class="flex flex-wrap gap-2 min-h-[38px] items-center">
-                <!-- Badges dinámicos -->
-              </div>
-            </div>
-
-            <!-- Control de cantidad -->
-            <div class="flex items-center justify-between bg-beige/60 p-3.5 rounded-2xl">
-              <span class="text-sm font-bold text-cafeOscuro">Cantidad de roles:</span>
-              <div class="flex items-center gap-3">
-                <button id="custom-qty-minus" type="button" class="w-9 h-9 rounded-xl bg-crema hover:bg-cafeOscuro hover:text-crema text-cafeOscuro font-bold text-lg transition-colors shadow-sm">-</button>
-                <span id="custom-qty-value" class="font-display text-xl w-6 text-center">1</span>
-                <button id="custom-qty-plus" type="button" class="w-9 h-9 rounded-xl bg-crema hover:bg-cafeOscuro hover:text-crema text-cafeOscuro font-bold text-lg transition-colors shadow-sm">+</button>
-              </div>
-            </div>
-
-            <!-- Precio Total Dinámico -->
-            <div class="bg-cafeOscuro text-crema p-5 rounded-2xl flex items-center justify-between">
-              <div>
-                <span class="text-xs uppercase tracking-wider text-beige block">Total de tu creación</span>
-                <span id="summary-unit-breakdown" class="text-xs text-beige/80">$55 MXN por unidad</span>
-              </div>
-              <span id="summary-total-price" class="font-display text-3xl">$55 MXN</span>
-            </div>
-
-            <!-- Botón Agregar al Carrito -->
-            <button id="add-custom-to-cart-btn" type="button" class="w-full bg-cafeMedio hover:bg-cafeOscuro text-crema py-4 px-6 rounded-2xl font-bold text-base shadow-lg transition-all active:scale-98 flex items-center justify-center gap-2">
-              <span> Agregar Rol Personalizado al Carrito</span>
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 

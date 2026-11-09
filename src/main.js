@@ -17,9 +17,28 @@ let customQuantity = 1;
 // ============================================================================
 // INICIALIZACIÓN
 // ============================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderProductsGrid();
-  renderCustomizer();
+  // 1. Verificamos si estamos en la página del personalizador mediante un parámetro URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const baseFromUrl = urlParams.get('base');
+  
+  if (baseFromUrl) {
+    const foundProd = PRODUCTS.find(p => p.id === baseFromUrl);
+    if (foundProd) {
+      selectedBaseProduct = foundProd;
+    }
+  }
+
+  // 2. Renderizamos solo lo que existe en la página actual
+  if (document.getElementById("products-grid")) {
+    renderProductsGrid();
+  }
+  
+  if (document.getElementById("customizer-base-list")) {
+    renderCustomizer();
+  }
+
   updateCartUI();
   setupEventListeners();
 });
@@ -60,18 +79,21 @@ function renderProductsGrid() {
       </div>
 
       <div class="px-6 pb-6 pt-2 flex gap-2.5">
+        <!-- Botón 1: Agregar al carrito -->
         <button
           data-add-id="${product.id}"
-          class="add-direct-btn flex-1 bg-cafeOscuro hover:bg-cafeMedio text-crema py-3 px-4 rounded-2xl font-bold text-sm transition-all active:scale-95"
+          class="add-direct-btn flex-1 flex items-center justify-center bg-cafeOscuro hover:bg-cafeMedio text-crema py-3 px-2 rounded-2xl font-bold text-sm text-center transition-all active:scale-95"
         >
-          + Agregar al carrito
+          + Agregar
         </button>
+        
+        <!-- Botón 2: Toppings (Personalizar) -->
         <button
           data-customize-id="${product.id}"
-          class="customize-product-btn bg-crema hover:bg-cafeRosado hover:text-crema text-cafeOscuro border border-cafeOscuro/20 py-3 px-3.5 rounded-2xl font-bold text-xs transition-all"
+          class="customize-product-btn flex-1 flex items-center justify-center bg-crema hover:bg-cafeRosado hover:text-crema text-cafeOscuro border border-cafeOscuro/20 py-3 px-2 rounded-2xl font-bold text-sm text-center transition-all"
           title="Agregar toppings a este rol"
         >
-           Toppings
+          Toppings
         </button>
       </div>
     </article>
@@ -89,14 +111,9 @@ function renderProductsGrid() {
 
   document.querySelectorAll(".customize-product-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const prod = PRODUCTS.find((p) => p.id === btn.dataset.customizeId);
-      if (prod) {
-        selectedBaseProduct = prod;
-        selectedToppings = [];
-        customQuantity = 1;
-        renderCustomizer();
-        document.getElementById("personalizar")?.scrollIntoView({ behavior: "smooth" });
-      }
+      const prodId = btn.dataset.customizeId;
+      // En lugar de scrollear, redirigimos a la nueva página enviando el ID del producto
+      window.location.href = `personalizar.html?base=${prodId}`;
     });
   });
 }
@@ -179,18 +196,25 @@ function renderToppingButton(topping) {
     <button
       type="button"
       data-topping-id="${topping.id}"
-      class="toggle-topping-btn p-3.5 rounded-2xl border-2 text-left transition-all flex items-center justify-between ${
+      class="toggle-topping-btn p-3 rounded-2xl border-2 text-left transition-all flex items-center justify-between gap-2 ${
         isSelected
           ? "border-cafeOscuro bg-cafeOscuro text-crema shadow-sm"
           : "border-beige bg-crema text-cafeOscuro hover:border-cafeRosado"
       }"
     >
-      <div>
-        <span class="text-lg mr-1">${topping.icon}</span>
-        <span class="font-bold text-sm block mt-0.5">${topping.name}</span>
-        <span class="text-xs ${isSelected ? "text-beige" : "text-cafeMedio"}">+$${topping.price} MXN</span>
+      <div class="flex items-center gap-3">
+        <!-- Contenedor de la imagen/icono más grande -->
+        <div class="flex-shrink-0 text-4xl flex items-center justify-center">
+          ${topping.icon}
+        </div>
+        <!-- Contenedor del texto -->
+        <div class="flex flex-col">
+          <span class="font-bold text-sm leading-tight">${topping.name}</span>
+          <span class="text-xs mt-0.5 ${isSelected ? "text-beige" : "text-cafeMedio"}">+$${topping.price} MXN</span>
+        </div>
       </div>
-      <span class="w-5 h-5 rounded-md border flex items-center justify-center text-xs ${
+      
+      <span class="w-6 h-6 flex-shrink-0 rounded-md border flex items-center justify-center text-xs ${
         isSelected ? "border-crema bg-crema text-cafeOscuro font-bold" : "border-cafeOscuro/40"
       }">
         ${isSelected ? "✓" : "+"}

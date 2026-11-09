@@ -10,16 +10,47 @@ export const BUSINESS_CONFIG = {
 
 // Toppings Frutales (+$10 MXN c/u)
 export const FRUIT_TOPPINGS = [
-  { id: "fresa", name: "Fresa natural", price: 10, category: "frutal", icon: "🍓" },
-  { id: "durazno", name: "Durazno en almíbar", price: 10, category: "frutal", icon: "🍑" },
-  { id: "mermelada", name: "Mermelada natural", price: 10, category: "frutal", icon: "🫙" }
+  { id: "fresa",
+    name: "Fresa natural",
+    price: 10,
+    category: "frutal",
+    icon: `<img src="./public/images/Fresa-natural.jpg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Fresa" />` 
+  },
+  { 
+    id: "durazno", 
+    name: "Durazno en almíbar", 
+    price: 10, 
+    category: "frutal", 
+    icon: `<img src="./public/images/duraznos.jpeg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Durazno" />` 
+  },
+  { id: "mermelada",
+    name: "Mermelada natural", 
+    price: 10, 
+    category: "frutal", 
+    icon: `<img src="./public/images/mermelada.jpeg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Mermelada" />` 
+  }
 ];
 
 // Toppings Adicionales (+$7 MXN c/u)
 export const EXTRA_TOPPINGS = [
-  { id: "almendra", name: "Almendra fileteada", price: 7, category: "adicional", icon: "🌰" },
-  { id: "nuez", name: "Nuez troceada", price: 7, category: "adicional", icon: "🥜" },
-  { id: "nutella", name: "Extra Nutella", price: 7, category: "adicional", icon: "🍫" }
+  { id: "almendra", 
+    name: "Almendra fileteada", 
+    price: 7, 
+    category: "adicional", 
+    icon: `<img src="./public/images/almendra.jpeg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Almendra" />` 
+  },
+  { id: "nuez", 
+    name: "Nuez troceada", 
+    price: 7, 
+    category: "adicional", 
+    icon: `<img src="./public/images/nuez.jpg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Nuez" />`  
+  },
+  { id: "nutella", 
+    name: "Extra Nutella", 
+    price: 7, 
+    category: "adicional", 
+    icon: `<img src="./public/images/nutella.jpg" class="w-14 h-14 rounded-xl object-cover border border-cafeRosado/40 shadow-sm" alt="Nutella" />` 
+  }
 ];
 
 // Catálogo de Roles de Canela
@@ -31,7 +62,7 @@ export const PRODUCTS = [
     badge: "Base ideal para personalizar",
     price: 55,
     description: "Nuestro clásico rol artesanal recién horneado con canela selecta y generoso glaseado cremoso de la casa.",
-    image: "./public/images/rol-de-canela.jpg",
+    image: "./public/images/rol-glaseado.png",
     fallbackImage: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=900&q=80",
     featured: true
   },
@@ -42,7 +73,7 @@ export const PRODUCTS = [
     badge: "Favorito",
     price: 65,
     description: "Rol esponjoso cubierto con glaseado cremoso, trozos crujientes de galleta Oreo y drizzle de chocolate.",
-    image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=900&q=80",
+    image: "./public/images/rol-oreo.jpeg",
     fallbackImage: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=900&q=80",
     featured: false
   },
@@ -53,7 +84,7 @@ export const PRODUCTS = [
     badge: "Especialidad",
     price: 70,
     description: "Cubierto con glaseado suave, crumble de galleta caramelizada Biscoff y coronado con una galleta Lotus entera.",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80",
+    image: "./public/images/rol lotus.jpeg",
     fallbackImage: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80",
     featured: true
   },
@@ -64,7 +95,7 @@ export const PRODUCTS = [
     badge: "Premium",
     price: 75,
     description: "La combinación definitiva para amantes del chocolate: glaseado, hilos de Nutella, trozos de nuez y bombón Ferrero Rocher.",
-    image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80",
+    image: "./public/images/rol-nutella-ferrero-nuez.jpeg",
     fallbackImage: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80",
     featured: true
   },
@@ -75,7 +106,7 @@ export const PRODUCTS = [
     badge: "Más vendido",
     price: 70,
     description: "El equilibrio perfecto: glaseado artesanal decorado con Nutella, fresas frescas picadas y nuez selecta.",
-    image: "./public/images/rol-de-canela.jpg",
+    image: "./public/images/rol-nutella-fresa-nuez.jpeg",
     fallbackImage: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
     featured: true
   },
@@ -86,7 +117,7 @@ export const PRODUCTS = [
     badge: "Delicado",
     price: 65,
     description: "Suave cobertura cremosa con lluvia de coco rallado, almendra fileteada y bombón Raffaello.",
-    image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=80",
+    image: "./public/images/rol-rafaelo.jpeg",
     fallbackImage: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=80",
     featured: false
   }

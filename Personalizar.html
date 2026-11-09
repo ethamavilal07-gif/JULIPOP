@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalizar Rol — JULIPOP Repostería</title>
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crema: '#FFF0D9',
+            cafeOscuro: '#68412D',
+            cafeMedio: '#80523A',
+            beige: '#EBD5B8',
+            cafeRosado: '#A47A63',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="./src/styles/global.css" />
+</head>
+<body class="bg-crema text-cafeOscuro antialiased selection:bg-cafeOscuro selection:text-crema">
+
+  <!-- Notificación Toast Flotante -->
+  <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
+    <div class="bg-cafeOscuro text-crema px-5 py-3.5 rounded-2xl shadow-2xl border border-cafeRosado/40 flex items-center gap-3">
+      <span class="w-7 h-7 rounded-full bg-crema text-cafeOscuro flex items-center justify-center font-bold text-sm">✓</span>
+      <span id="toast-message" class="text-sm font-semibold">Producto agregado al carrito</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 bg-crema/95 backdrop-blur-md border-b border-beige shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-beige/70 border border-cafeRosado/30 flex items-center justify-center p-1.5 group-hover:scale-105 transition-transform">
+          <svg viewBox="0 0 120 100" class="w-9 h-9" fill="none">
+            <path d="M60 44 C64 44, 67 47, 65 51 C63 55, 55 56, 51 52 C45 46, 48 36, 58 34 C70 31, 80 39, 78 51 C76 63, 60 68, 46 63 C32 58, 30 40, 44 29 C58 19, 82 23, 89 41 C93 52, 87 67, 70 72 C52 77, 31 69, 28 52 C26 64, 30 78, 52 83 C74 87, 92 75, 92 56 C92 50, 90 45, 88 42" stroke="#68412D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <span class="block text-2xl font-light tracking-[0.18em] text-cafeOscuro leading-none">JULIPOP</span>
+          <span class="block text-[10px] font-semibold tracking-[0.36em] text-cafeMedio mt-1">REPOSTERÍA</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-cafeOscuro">
+        <a href="index.html" class="hover:text-cafeMedio transition-colors">Inicio</a>
+        <a href="index.html#menu" class="hover:text-cafeMedio transition-colors">Menú</a>
+        <span class="text-cafeMedio cursor-default">Personalizar Rol</span>
+        <a href="index.html#carta-oficial" class="hover:text-cafeMedio transition-colors">Carta de Precios</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="open-cart-btn" class="relative inline-flex items-center gap-2.5 bg-cafeOscuro hover:bg-cafeMedio text-crema px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md transition-all active:scale-95">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Mi Pedido</span>
+          <span id="cart-total-nav" class="hidden sm:inline text-xs bg-cafeMedio/90 px-2 py-0.5 rounded-lg">$0</span>
+          <span id="cart-badge" class="w-6 h-6 rounded-full bg-crema text-cafeOscuro text-xs font-extrabold flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= PERSONALIZADOR ================= -->
+  <section id="personalizar" class="py-16 sm:py-20 bg-beige/65 border-y border-cafeRosado/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block bg-cafeOscuro text-crema px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+          Armado a tu gusto
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl text-cafeOscuro">
+          Personaliza tu Rol de Canela
+        </h2>
+        <p class="text-cafeMedio mt-2 text-sm sm:text-base">
+          Elige tu rol base, combina toppings frutales (+$10) o adicionales (+$7) y observa cómo se actualiza el precio al instante.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-display text-xl text-cafeOscuro">1. Selecciona tu Rol Base</h3>
+              <span class="text-xs font-bold bg-beige px-3 py-1 rounded-full text-cafeMedio">Obligatorio</span>
+            </div>
+            <div id="customizer-base-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            </div>
+          </div>
+
+          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-display text-xl text-cafeOscuro">2. Toppings Frutales</h3>
+                <p class="text-xs text-cafeMedio">Puedes elegir uno o varios ingredientes frescos</p>
+              </div>
+              <span class="bg-cafeOscuro text-crema px-3.5 py-1 rounded-full text-xs font-extrabold">+$10 MXN c/u</span>
+            </div>
+            <div id="customizer-fruit-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            </div>
+          </div>
+
+          <div class="bg-crema p-6 rounded-3xl border border-cafeRosado/30 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-display text-xl text-cafeOscuro">3. Toppings Adicionales</h3>
+                <p class="text-xs text-cafeMedio">Dale un toque crujiente o chocolatoso</p>
+              </div>
+              <span class="bg-cafeOscuro text-crema px-3.5 py-1 rounded-full text-xs font-extrabold">+$7 MXN c/u</span>
+            </div>
+            <div id="customizer-extra-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <div class="bg-crema rounded-3xl p-6 sm:p-7 border-2 border-cafeOscuro/20 shadow-xl space-y-5">
+            <div class="flex items-center justify-between border-b border-beige pb-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-cafeRosado">Vista Previa</span>
+                <h3 id="summary-base-name" class="font-display text-2xl text-cafeOscuro">Rol de canela glaseado</h3>
+              </div>
+              <span id="summary-base-price" class="font-display text-xl bg-beige px-3.5 py-1 rounded-full text-cafeOscuro">$55</span>
+            </div>
+
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-cafeMedio block mb-2">
+                Toppings seleccionados:
+              </span>
+              <div id="summary-toppings-badges" class="flex flex-wrap gap-2 min-h-[38px] items-center">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-beige/60 p-3.5 rounded-2xl">
+              <span class="text-sm font-bold text-cafeOscuro">Cantidad de roles:</span>
+              <div class="flex items-center gap-3">
+                <button id="custom-qty-minus" type="button" class="w-9 h-9 rounded-xl bg-crema hover:bg-cafeOscuro hover:text-crema text-cafeOscuro font-bold text-lg transition-colors shadow-sm">-</button>
+                <span id="custom-qty-value" class="font-display text-xl w-6 text-center">1</span>
+                <button id="custom-qty-plus" type="button" class="w-9 h-9 rounded-xl bg-crema hover:bg-cafeOscuro hover:text-crema text-cafeOscuro font-bold text-lg transition-colors shadow-sm">+</button>
+              </div>
+            </div>
+
+            <div class="bg-cafeOscuro text-crema p-5 rounded-2xl flex items-center justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-beige block">Total de tu creación</span>
+                <span id="summary-unit-breakdown" class="text-xs text-beige/80">$55 MXN por unidad</span>
+              </div>
+              <span id="summary-total-price" class="font-display text-3xl">$55 MXN</span>
+            </div>
+
+            <button id="add-custom-to-cart-btn" type="button" class="w-full bg-cafeMedio hover:bg-cafeOscuro text-crema py-4 px-6 rounded-2xl font-bold text-base shadow-lg transition-all active:scale-98 flex items-center justify-center gap-2">
+              <span> Agregar Rol Personalizado al Carrito</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CARRITO ================= -->
+  <div id="cart-overlay" class="fixed inset-0 bg-cafeOscuro/50 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-crema z-50 shadow-2xl border-l border-beige transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 bg-beige/70 border-b border-cafeRosado/30 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="text-2xl">🧺</span>
+        <div>
+          <h3 class="font-display text-xl text-cafeOscuro leading-none">Tu Pedido</h3>
+          <span id="cart-items-count-subtitle" class="text-xs text-cafeMedio">0 productos seleccionados</span>
+        </div>
+      </div>
+      <button id="close-cart-btn" class="w-9 h-9 rounded-full bg-crema hover:bg-cafeOscuro hover:text-crema text-cafeOscuro font-bold flex items-center justify-center transition-colors">✕</button>
+    </div>
+
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4">
+    </div>
+
+    <div class="p-5 bg-beige/80 border-t border-cafeRosado/30 space-y-4">
+      <div class="space-y-2">
+        <input id="customer-name-input" type="text" placeholder="Tu nombre (opcional para el pedido)" class="w-full px-3.5 py-2.5 rounded-xl bg-crema border border-cafeRosado/40 text-sm text-cafeOscuro placeholder-cafeRosado focus:outline-none focus:border-cafeOscuro" />
+        <input id="customer-notes-input" type="text" placeholder="Notas (ej. sin nuez, pasar a recoger a las 6pm)" class="w-full px-3.5 py-2.5 rounded-xl bg-crema border border-cafeRosado/40 text-sm text-cafeOscuro placeholder-cafeRosado focus:outline-none focus:border-cafeOscuro" />
+      </div>
+      <div class="flex items-center justify-between pt-1">
+        <span class="text-sm font-bold text-cafeMedio">Total del Pedido:</span>
+        <span id="cart-grand-total" class="font-display text-3xl text-cafeOscuro">$0 MXN</span>
+      </div>
+      <div class="flex gap-2">
+        <button id="clear-cart-btn" type="button" class="px-4 py-3.5 rounded-2xl border border-cafeOscuro/30 text-cafeOscuro hover:bg-cafeOscuro hover:text-crema text-xs font-bold transition-colors">Vaciar</button>
+        <button id="checkout-whatsapp-btn" type="button" class="flex-1 bg-[#25D366] hover:bg-[#1ebe5b] text-white py-3.5 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2">
+          <span> Finalizar pedido por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-cafeOscuro text-crema py-12 border-t-4 border-cafeRosado">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="text-center sm:text-left">
+        <span class="block text-2xl font-light tracking-[0.22em]">JULIPOP</span>
+        <span class="block text-xs tracking-[0.35em] text-beige mt-0.5">REPOSTERÍA ARTESANAL</span>
+        <p class="text-xs text-beige/80 mt-2">Especialistas en roles de canela recién horneados.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-beige">
+        <a href="index.html" class="hover:text-white">Inicio</a>
+        <a href="index.html#menu" class="hover:text-white">Menú</a>
+        <a href="index.html#carta-oficial" class="hover:text-white">Precios</a>
+      </div>
+      <div class="text-xs text-beige/70 text-center sm:text-right">
+        © 2026 JULIPOP Repostería. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
